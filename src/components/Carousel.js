@@ -58,10 +58,10 @@ export default function Carousel({ filteredrestaurants }) {
       </h1>
       <Swiper
         direction={"horizontal"}
-        slidesPerView={3}
+        slidesPerView={3.35}
         spaceBetween={30}
         mousewheel={true}
-        speed={400} 
+        speed={500} 
         modules={[Mousewheel, Pagination]}
         className="h-auto swiper-container"
       >
