@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ASSETS_BASE_URL } from "../constants";
+import { ASSETS_BASE_URL } from "../utils/constants";
 import { FaStar } from "react-icons/fa";
 
 const Restaurant = ({ restaurants }) => {

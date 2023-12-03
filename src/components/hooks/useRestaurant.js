@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { RESTAURANT_BASE_URL } from "../../constants";
+import { RESTAURANT_BASE_URL } from "../../utils/constants";
 import { showErrorToast } from "../../utils/toastUtils";
 import { destructureRestaurants } from "../../utils/utils";
 

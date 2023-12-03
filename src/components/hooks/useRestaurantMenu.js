@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { RESTAURANT_MENU_URL } from "../../constants";
+import { RESTAURANT_MENU_URL } from "../../utils/constants";
 import { destructureRestaurantInfoAndMenu } from "../../utils/utils";
 
 const useRestaurantMenu = (restaurantId) => {

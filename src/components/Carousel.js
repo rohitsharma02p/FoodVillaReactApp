@@ -1,4 +1,4 @@
-import { ASSETS_BASE_URL } from "../constants";
+import { ASSETS_BASE_URL } from "../utils/constants";
 
 export default function Carousel({ restaurants }) {
   if (!restaurants || restaurants.length === 0) {
