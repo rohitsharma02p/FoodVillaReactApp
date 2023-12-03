@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { RESTAURANT_BASE_URL } from "../../constants";
-import { showErrorToast } from "../../toastUtils";
-import { destructureRestaurants } from "../../utils";
+import { showErrorToast } from "../../utils/toastUtils";
+import { destructureRestaurants } from "../../utils/utils";
 
 const useRestaurant = () => {
   const [topicalBannerRestaurants, setTopicalBannerRestaurants] = useState([]);
@@ -15,7 +15,6 @@ const useRestaurant = () => {
     restaurantGridListingRestaurants,
     setRestaurantGridListingRestaurants,
   ] = useState([]);
-  const [filteredRestaurant, setFilteredRestaurants] = useState([]);
 
   useEffect(() => {
     fetchRestaurant();
@@ -36,20 +35,15 @@ const useRestaurant = () => {
       setWhatsOnYourMindRestaurants(whatsOnYourMindData);
       setTopBrandsForYouRestaurants(topBrandsData);
       setRestaurantGridListingRestaurants(gridListingData);
-      setFilteredRestaurants(gridListingData);
     } catch (error) {
       showErrorToast(error.message);
     }
   };
 
-  return [
-    filteredRestaurant,
-    setFilteredRestaurants,
-    {
-      topicalBannerRestaurants,
-      restaurantGridListingRestaurants,
-    },
-  ];
+  return {
+    topicalBannerRestaurants,
+    restaurantGridListingRestaurants,
+  };
 };
 
 export default useRestaurant;

@@ -6,7 +6,7 @@ export default function Carousel({ restaurants }) {
   }
   return (
     <div className="max-w-screen-2xl mx-auto py-6">
-      <h1 className="text-2xl font-semibold text-black-500 text-start mb-5 ml-10">
+      <h1 className="text-3xl font-semibold text-gray-800 my-8 ml-6">
         Best offers for you
       </h1>
       <div className="max-w-screen-2xl w-full px-10 py-50 flex gap-10 overflow-x-auto scroll-snap-type-x-mandatory">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -11,6 +11,9 @@ import Error from "./components/Error";
 import About from "./components/About";
 import { Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Shimmer from "./components/Shimmer";
+
+const Pricing = lazy(() => import("./components/Pricing"));
 
 const AppLayout = () => {
   return (
@@ -38,6 +41,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/pricing",
+        element: (
+          <Suspense fallback={<Shimmer numberOfCards={10} />}>
+            <Pricing />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurant/:restaurantId",
