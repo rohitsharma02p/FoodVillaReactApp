@@ -1,10 +1,21 @@
 import { useState, useEffect } from "react";
 import { RESTAURANT_BASE_URL } from "../constants";
 import { showErrorToast } from "../toastUtils";
+import { destructureRestaurants } from "../utils";
 
 const useRestaurant = () => {
-  const [restaurants, setRestaurants] = useState([]);
-  const [filteredrestaurants, setFilteredRestaurants] = useState([]);
+  const [topicalBannerRestaurants, setTopicalBannerRestaurants] = useState([]);
+  const [whatsOnYourMindRestaurants, setWhatsOnYourMindRestaurants] = useState(
+    []
+  );
+  const [topBrandsForYouRestaurants, setTopBrandsForYouRestaurants] = useState(
+    []
+  );
+  const [
+    restaurantGridListingRestaurants,
+    setRestaurantGridListingRestaurants,
+  ] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurants] = useState([]);
 
   useEffect(() => {
     fetchRestaurant();
@@ -14,13 +25,31 @@ const useRestaurant = () => {
     try {
       const data = await fetch(RESTAURANT_BASE_URL);
       const json = await data.json();
-      setRestaurants(json?.data?.cards);
-      setFilteredRestaurants(json?.data?.cards);
+      const {
+        topicalBannerRestaurants: topicalBannerData,
+        whatsOnYourMindRestaurants: whatsOnYourMindData,
+        topBrandsForYouRestaurants: topBrandsData,
+        restaurantGridListingRestaurants: gridListingData,
+      } = destructureRestaurants(json?.data?.cards);
+
+      setTopicalBannerRestaurants(topicalBannerData);
+      setWhatsOnYourMindRestaurants(whatsOnYourMindData);
+      setTopBrandsForYouRestaurants(topBrandsData);
+      setRestaurantGridListingRestaurants(gridListingData);
+      setFilteredRestaurants(gridListingData);
     } catch (error) {
       showErrorToast(error.message);
     }
   };
-  return [restaurants, filteredrestaurants, setFilteredRestaurants];
+
+  return [
+    filteredRestaurant,
+    setFilteredRestaurants,
+    {
+      topicalBannerRestaurants,
+      restaurantGridListingRestaurants,
+    },
+  ];
 };
 
 export default useRestaurant;

@@ -2,13 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.appLayout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.content {
-  flex: 1;
-}
-
+html, body, #root {
+    height: 100%;
+  }
+  

@@ -1,84 +1,31 @@
-import { Lazy, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/swiper-react.mjs";
-import { Mousewheel, Pagination, Lazy } from "swiper/modules";
-import "swiper/swiper.scss";
-import "swiper/modules/navigation.scss";
-import "swiper/modules/pagination.scss";
-
 import { ASSETS_BASE_URL } from "../constants";
 
-// export default function Carousel({ filteredrestaurants }) {
-//   if (
-//     !filteredrestaurants ||
-//     !filteredrestaurants[0]?.card?.card?.imageGridCards?.info
-//   ) {
-//     return null;
-//   }
-
-//   const images = filteredrestaurants[0]?.card?.card?.imageGridCards?.info;
-//   console.log(images);
-//   return (
-//     <Swiper
-//       direction={"horizontal"}
-//       slidesPerView={1}
-//       spaceBetween={30}
-//       mousewheel={true}
-//       pagination={{
-//         clickable: true,
-//       }}
-//       modules={[Mousewheel, Pagination]}
-//       className="mySwiper"
-//     >
-//       {images.map((image) => (
-//         <SwiperSlide key={image.id}>
-//           <img
-//             className="w-auto h-auto"
-//             src={ASSETS_BASE_URL + image.imageId}
-//             alt={image?.accessibility?.altText}
-//           />
-//         </SwiperSlide>
-//       ))}
-//     </Swiper>
-//   );
-// }
-export default function Carousel({ filteredrestaurants }) {
-  if (
-    !filteredrestaurants ||
-    !filteredrestaurants[0]?.card?.card?.imageGridCards?.info
-  ) {
+export default function Carousel({ restaurants }) {
+  if (!restaurants || restaurants.length === 0) {
     return null;
   }
-
-  const images = filteredrestaurants[0]?.card?.card?.imageGridCards?.info;
-
   return (
-    <div className="max-w-7xl mx-auto py-16">
-      <h1 className="text-4xl font-semibold text-orange-500 text-center mb-8">
-        Trending Food
+    <div className="max-w-screen-2xl mx-auto py-6">
+      <h1 className="text-2xl font-semibold text-black-500 text-start mb-5 ml-10">
+        Best offers for you
       </h1>
-      <Swiper
-        direction={"horizontal"}
-        slidesPerView={3.35}
-        spaceBetween={30}
-        mousewheel={true}
-        speed={500} 
-        modules={[Mousewheel, Pagination]}
-        className="h-auto swiper-container"
-      >
-        {images.map((image) => (
-          <SwiperSlide
-            key={image.id}
-            className="flex justify-center items-center transition-all duration-500 ease-in-out" // Tailwind transition classes for smoothness
-          >
-            <img
-              className="h-auto object-cover w-full"
-              src={ASSETS_BASE_URL + image.imageId}
-              alt={image?.accessibility?.altText}
-              loading="lazy"
-            />
-          </SwiperSlide>
+      <div className="max-w-screen-2xl w-full px-10 py-50 flex gap-10 overflow-x-auto scroll-snap-type-x-mandatory">
+        <style>
+          {`
+            .max-w-screen-2xl::-webkit-scrollbar {
+              display: none;
+            }
+          `}
+        </style>
+        {restaurants.map(({ id, imageId, accessibility }) => (
+          <img
+            key={id}
+            className="h-56 w-120 bg-deeppink rounded-8 scroll-snap-align-center flex-shrink-0"
+            src={ASSETS_BASE_URL + imageId}
+            alt={accessibility?.altText}
+          />
         ))}
-      </Swiper>
+      </div>
     </div>
   );
 }
