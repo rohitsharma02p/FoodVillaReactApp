@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { RESTAURANT_BASE_URL } from "../constants";
-import { showErrorToast } from "../toastUtils";
-import { destructureRestaurants } from "../utils";
+import { RESTAURANT_BASE_URL } from "../../constants";
+import { showErrorToast } from "../../toastUtils";
+import { destructureRestaurants } from "../../utils";
 
 const useRestaurant = () => {
   const [topicalBannerRestaurants, setTopicalBannerRestaurants] = useState([]);

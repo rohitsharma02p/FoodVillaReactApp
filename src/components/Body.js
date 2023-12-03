@@ -1,5 +1,5 @@
 import React from "react";
-import useRestaurant from "./useRestaurant";
+import useRestaurant from "./hooks/useRestaurant";
 import Carousel from "./Carousel";
 import Restaurant from "./Restaurant";
 import { useState } from "react";
