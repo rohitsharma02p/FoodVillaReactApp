@@ -79,6 +79,3 @@ _/}
 //not render component (Early return)
 
 
-
-
-"homepage": "https://rohitsharma02p.github.io/webreact"
