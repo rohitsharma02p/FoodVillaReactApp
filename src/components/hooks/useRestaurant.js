@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { RESTAURANT_BASE_URL } from "../../utils/constants";
 import { showErrorToast } from "../../utils/toastUtils";
 import { destructureRestaurants } from "../../utils/utils";
+import { RESTAURANT_BASE_URL } from "../../utils/constants";
 
-const useRestaurant = () => {
+function useRestaurant() {
   const [topicalBannerRestaurants, setTopicalBannerRestaurants] = useState([]);
   const [whatsOnYourMindRestaurants, setWhatsOnYourMindRestaurants] = useState(
     []
@@ -44,6 +44,6 @@ const useRestaurant = () => {
     topicalBannerRestaurants,
     restaurantGridListingRestaurants,
   };
-};
+}
 
 export default useRestaurant;
