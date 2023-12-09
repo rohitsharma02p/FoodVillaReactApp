@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Child from "./ChildComponent";
+import UserContext from "../utils/UserContext";
 
 class Parent extends Component {
   constructor(props) {
@@ -14,8 +15,18 @@ class Parent extends Component {
     return (
       <div>
         <div>Parent Component</div>
-        <Child name = {"child 1"} />
-        <Child name = {"child 2"} />
+        <UserContext.Consumer>
+          {({ user }) => {
+            return (
+              <div>
+                <span className="mr-4">{user.name}</span>
+                <span>{user.email}</span>
+              </div>
+            );
+          }}
+        </UserContext.Consumer>
+        <Child name={"child 1"} />
+        <Child name={"child 2"} />
       </div>
     );
   }

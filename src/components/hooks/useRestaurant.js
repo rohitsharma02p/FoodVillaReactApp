@@ -17,7 +17,11 @@ function useRestaurant() {
   ] = useState([]);
 
   useEffect(() => {
-    fetchRestaurant();
+    if (navigator.onLine) {
+      fetchRestaurant();
+    } else {
+      console.log("User is offline. Cannot fetch restaurant data.");
+    }
   }, []);
 
   const fetchRestaurant = async () => {

@@ -7,11 +7,12 @@ import OfflinePopup from "./OfflinePopup";
 import useRestaurantFilter from "./hooks/useRestaurantFilter";
 
 const Body = () => {
+  const isOnline = useOnline();
+  
   const { topicalBannerRestaurants, restaurantGridListingRestaurants } =
     useRestaurant();
   const { search, filteredRestaurants, handleFilterChange } =
     useRestaurantFilter(restaurantGridListingRestaurants);
-  const isOnline = useOnline();
 
   const renderContent = () => {
     if (
