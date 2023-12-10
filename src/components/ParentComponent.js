@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Child from "./ChildComponent";
-import UserContext from "../utils/UserContext";
+import UserContext from "../context/UserContext";
 
 class Parent extends Component {
   constructor(props) {

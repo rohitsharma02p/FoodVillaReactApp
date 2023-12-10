@@ -16,14 +16,6 @@ function useRestaurant() {
     setRestaurantGridListingRestaurants,
   ] = useState([]);
 
-  useEffect(() => {
-    if (navigator.onLine) {
-      fetchRestaurant();
-    } else {
-      console.log("User is offline. Cannot fetch restaurant data.");
-    }
-  }, []);
-
   const fetchRestaurant = async () => {
     try {
       const data = await fetch(RESTAURANT_BASE_URL);
@@ -43,6 +35,14 @@ function useRestaurant() {
       showErrorToast(error.message);
     }
   };
+
+  useEffect(() => {
+    if (navigator.onLine) {
+      fetchRestaurant();
+    } else {
+      console.log("User is offline. Cannot fetch restaurant data.");
+    }
+  }, []);
 
   return {
     topicalBannerRestaurants,

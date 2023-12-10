@@ -78,4 +78,12 @@ _/}
 
 //not render component (Early return)
 
+<!--
 
+Redux tool kit 👍
+
+Dispatch an Action => Which calls Reducer function => which updates the slice of Redux Store
+
+To read the slice of the store we need Selector(hook)
+
+ -->

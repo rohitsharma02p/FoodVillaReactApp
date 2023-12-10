@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "./components/Header";
+import { Header, ContentWithHeader } from "./components/Header";
 import Footer from "./components/Footer";
 import Body from "./components/Body";
 import Parent from "./components/ParentComponent";
@@ -12,8 +12,11 @@ import About from "./components/About";
 import { Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
-import UserContext from "./utils/UserContext";
+import UserContext from "./context/UserContext";
 import Login from "./components/Login";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
 
 const Pricing = lazy(() => import("./components/Pricing"));
 
@@ -23,27 +26,33 @@ const AppLayout = () => {
     email: "dummyname@radiansys.com",
   });
   return (
-    <UserContext.Provider
-      value={{
-        user: user,
-        setUser,
-      }}
-    >
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <div className="flex-grow">
-          <Outlet />
+    <Provider store={store}>
+      <UserContext.Provider
+        value={{
+          user: user,
+          setUser,
+        }}
+      >
+        <div className="flex flex-col min-h-screen">
+          <Header /> {/* Place the Header component here */}
+          <div className="flex-grow">
+            {/* Render the content, including ContentWithHeader and Outlet */}
+            <ContentWithHeader>
+              <Outlet />
+            </ContentWithHeader>
+          </div>
+          <Footer />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+          />
         </div>
-        <Footer />
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-        />
-      </div>
-    </UserContext.Provider>
+      </UserContext.Provider>
+    </Provider>
   );
 };
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -74,6 +83,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

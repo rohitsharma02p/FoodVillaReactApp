@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import UserContext from "../utils/UserContext.js";
+import UserContext from "../context/UserContext.js";
 
 const Input = ({ type, placeholder, value, onChange }) => (
   <input
