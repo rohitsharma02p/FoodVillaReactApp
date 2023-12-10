@@ -23,7 +23,7 @@ const Restaurant = ({ restaurants }) => {
               <img
                 src={`${ASSETS_BASE_URL}${info.cloudinaryImageId}`}
                 alt={info.name}
-                className="w-full h-48 object-cover"
+                className="w-full h-60 object-cover"
               />
               <div className="p-4">
                 <h2 className="text-xl font-semibold mb-2">{info.name}</h2>

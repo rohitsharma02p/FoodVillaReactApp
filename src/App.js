@@ -13,6 +13,7 @@ import { Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import Login from "./components/Login";
 
 const Pricing = lazy(() => import("./components/Pricing"));
 
@@ -70,11 +71,11 @@ const appRouter = createBrowserRouter([
         path: "/parent",
         element: <Parent />,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
     ],
-  },
-  {
-    path: "/rohit",
-    element: <Parent />,
   },
 ]);
 
